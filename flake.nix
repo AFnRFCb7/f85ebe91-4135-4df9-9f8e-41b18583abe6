@@ -64,7 +64,7 @@
                                         } :
                                             {
                                                 obviated-by = obviated-by ;
-                                                text =
+                                                test =
                                                     nixosTest
                                                         {
                                                             name = "nixos-test" ;
