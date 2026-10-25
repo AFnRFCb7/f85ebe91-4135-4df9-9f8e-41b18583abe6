@@ -69,9 +69,10 @@
                                                         {
                                                             name = "nixos-test" ;
                                                             nodes.client =
-                                                                { config , pkgs , ... } :
+                                                                { config , lib , pkgs , ... } :
                                                                     let
                                                                         _config = config-identity config ;
+                                                                        _lib = lib-identity lib ;
                                                                         _pkgs = pkgs-identity pkgs ;
                                                                         in
                                                                             {
@@ -110,9 +111,9 @@
                                                                                                     text =
                                                                                                         ''
                                                                                                             OBSERVED="$( sequential )" || failure 3444060292615108
-                                                                                                            if [[ ${ builtins.fixedWidthString 16 "0" ( builtins.toString expected ) } != "$OBSERVED" ]]
+                                                                                                            if [[ ${ _lib.fixedWidthString 16 "0" ( builtins.toString expected ) } != "$OBSERVED" ]]
                                                                                                             then
-                                                                                                                failure 2963819842126200 ${ builtins.fixedWidthString 16 "0" ( builtins.toString expected ) } "$OBSERVED"
+                                                                                                                failure 2963819842126200 ${ _lib.fixedWidthString 16 "0" ( builtins.toString expected ) } "$OBSERVED"
                                                                                                             fi
                                                                                                         '' ;
                                                                                                 }
