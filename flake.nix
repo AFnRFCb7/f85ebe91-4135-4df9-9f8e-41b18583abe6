@@ -110,9 +110,9 @@
                                                                                                     text =
                                                                                                         ''
                                                                                                             OBSERVED="$( sequential )" || failure 3444060292615108
-                                                                                                            if [[ ${ builtins.fixedWithString 16 "0" ( builtins.toString expected ) } != "$OBSERVED" ]]
+                                                                                                            if [[ ${ builtins.fixedWidthString 16 "0" ( builtins.toString expected ) } != "$OBSERVED" ]]
                                                                                                             then
-                                                                                                                failure 2963819842126200 ${ builtins.fixedWithString 16 "0" ( builtins.toString expected ) } "$OBSERVED"
+                                                                                                                failure 2963819842126200 ${ builtins.fixedWidthString 16 "0" ( builtins.toString expected ) } "$OBSERVED"
                                                                                                             fi
                                                                                                         '' ;
                                                                                                 }
