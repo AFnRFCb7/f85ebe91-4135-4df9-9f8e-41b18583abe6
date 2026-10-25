@@ -124,8 +124,8 @@
                                                             testScript =
                                                                 ''
                                                                     client.wait_for_unit("multi-user.target")
-                                                                    client.success("pre-test");
-                                                                    client.success("test-script");
+                                                                    client.succeed("pre-test");
+                                                                    client.succeed("test-script");
                                                                 '' ;
                                                         } ;
                                                 type = "sequential" ;
