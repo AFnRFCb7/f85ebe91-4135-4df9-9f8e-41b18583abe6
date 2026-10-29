@@ -66,7 +66,7 @@
                                                         {
                                                             name = "nixos-test" ;
                                                             nodes.client =
-                                                                { config , lib , pkgs , ... } :
+                                                                { config , lib , pkgs , ... } @module :
                                                                     let
                                                                         identified =
                                                                             if builtins.typeOf input == "lambda" then input module
