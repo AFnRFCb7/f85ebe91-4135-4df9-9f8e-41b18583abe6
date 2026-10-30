@@ -78,7 +78,23 @@
                                                                 } ,
                                             nixosTest ,
                                             obviated-by ,
-                                            visitor
+                                            visitor ?
+                                                { pkgs , ... } @module :
+                                                    let
+                                                        identified =
+                                                            if builtins.typeOf input == "lambda" then input module
+                                                            else if builtins.typeOf input == "null" then module
+                                                            else builtins.throw "4549895311111361" ;
+                                                        in
+                                                            with identified ;
+                                                                {
+                                                                    options.visitor =
+                                                                        lib.mkOption
+                                                                            {
+                                                                                default = ignore : ignore : value : builtins.toJSON value ;
+                                                                                type = lib.types.functionTo ( lib.types.functionTo ( lib.types.functionTo lib.types.anything ) ) ;
+                                                                            } ;
+                                                                }
                                         } :
                                         {
                                             initial ,
